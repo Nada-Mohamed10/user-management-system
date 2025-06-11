@@ -10,6 +10,7 @@ import { Users } from 'src/app/Shared/interface/users';
 export class UsersListComponent implements OnInit {
   allUsers:Users[]=[];
    searchTerm: string = '';
+   page: number = 1;
  constructor(private _userService:UserService) { }
   ngOnInit(): void {
     this.getUsers();
@@ -28,4 +29,9 @@ export class UsersListComponent implements OnInit {
     }
   })
  }
+ onSearchChanged(term: string) {
+  this.searchTerm = term;
+  this.page = 1; // نرجع لأول صفحة عند تغيير البحث
+}
+
 }

@@ -9,6 +9,7 @@ import { SearchComponent } from './Shared/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersModule } from './Features/users/users.module';
 import { SharedModule } from './Shared/shared.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SharedModule } from './Shared/shared.module';
     ReactiveFormsModule,
     HttpClientModule,
     UsersModule,
-    SharedModule
+    SharedModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

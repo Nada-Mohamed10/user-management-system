@@ -5,7 +5,8 @@
             <app-sidebar></app-sidebar>
         </div>
         <div class="col-10">
-        <app-search (searchChanged)="searchTerm = $event"></app-search>
+      <app-search (searchChanged)="onSearchChanged($event)"></app-search>
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -19,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of allUsers | search:searchTerm">
+                    <tr *ngFor="let user of allUsers | search:searchTerm | paginate: { itemsPerPage: 10, currentPage: page }">
                         <td></td>
                         <td>{{user.firstName}}</td>
                         <td>{{user.lastName}}</td>
@@ -30,6 +31,9 @@
                     </tr>
                 </tbody>
             </table>
+            <pagination-controls (pageChange)="page = $event " class="pagination mt-5"></pagination-controls>
         </div>
+         
     </div>
+    
 </div>
