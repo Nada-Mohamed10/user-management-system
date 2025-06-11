@@ -5,16 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { SearchComponent } from './Shared/search/search.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UsersModule } from './Features/users/users.module';
+import { SharedModule } from './Shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    UsersModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
