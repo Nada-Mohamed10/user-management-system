@@ -4,12 +4,13 @@ import { MainComponent } from './components/main/main.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
   {
     path: '',
-    component: MainComponent ,
+    component: MainComponent , canActivate:[authGuard] ,
     children: [
       {path:'users-list', component:UsersListComponent},
       {path:'profile', component:ProfileComponent}
