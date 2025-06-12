@@ -19,8 +19,11 @@ export class LoginComponent {
   login(){
     console.log(this.loginForm.value);
     this._authService.login(this.loginForm.value).subscribe({
-      next:data=> {this.toastr.success('Hello world!', 'Toastr fun!');},
-      error:err=>{console.log(err)},
+      next:data=> {
+         localStorage.setItem('token',JSON.stringify(data));
+        this.toastr.success('Hello world!', 'Toastr fun!');
+        this._authService.saveUserData();
+        }, 
       complete:()=> this.router.navigateByUrl('/users-list')
       
     })
