@@ -1,0 +1,74 @@
+.form-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 900px;
+  margin: 50px auto;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  color:rgba(108, 108, 108, 1);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid rgba(229, 229, 229, 1);
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(248, 248, 248, 1);
+}
+
+.form-group input::placeholder {
+  color: rgba(108, 108, 108, 1);
+  font-size: 12px;
+}
+.date input{
+  color:rgba(108, 108, 108, 1);
+  font-size: 12px;
+ 
+}
+.save-button {
+  background-color: #ffc107;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  width: 40%;
+  /* height: 3rem; */
+  text-align: center;
+  margin: 30px auto 0;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #e0a800;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+}

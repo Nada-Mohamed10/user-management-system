@@ -9,23 +9,28 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-   userData:Users | null =null;
-  constructor(private http:HttpClient,private router:Router) { }
-  login(user:Users):Observable<Users> {
-    return this.http.post<Users>("https://dummyjson.com/auth/login",user);
+  userData: Users | null = null;
+  
+  constructor(private http: HttpClient, private router: Router) { }
+  
+  login(user: Users): Observable<any> {
+    return this.http.post<any>("https://dummyjson.com/auth/login", {
+      username: user.username,
+      password: user.password
+    });
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
     this.userData = null;
     this.router.navigateByUrl('/login');
   }
 
-  saveUserData(){
-   const token = localStorage.getItem('token');
-  if (token) {
-    const decodedToken: any = jwtDecode(token);  
-    this.userData = decodedToken;
-  }
+  saveUserData() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      this.userData = decodedToken;
+    }
   }
 }

@@ -1,13 +1,20 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search"
-                 [(ngModel)]="searchTerm" 
-                (input)="onSearchChange()" 
-                aria-label="Recipient's username" aria-describedby="button-addon2" >
-                
-            </div>
+<div class="container mt-4 search">
+    <div class="d-flex justify-content-between align-items-center">
+        
+        <div class="search-input-wrapper position-relative flex-grow-1 me-3">
+            <input
+                type="text"
+                class="form-control  "
+                placeholder="Search..."
+                [(ngModel)]="searchTerm"
+                (input)="onSearchChange()"
+            />
+            <i class="bi bi-search position-absolute top-50 translate-middle-y end-0 me-3 text-muted"></i>
+        </div>
+
+       
+        <div class="notification-icon">
+            <i class="bi bi-bell fs-4 text-muted"></i>
         </div>
     </div>
 </div>

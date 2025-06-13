@@ -5,17 +5,21 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { authGuard } from './guards/auth.guard';
+import { FormComponent } from './Shared/form/form.component';
 
 const routes: Routes = [
+  {path:'', redirectTo:'login', pathMatch:'full'},
   {path:'login', component:LoginComponent},
   {
     path: '',
     component: MainComponent , canActivate:[authGuard] ,
     children: [
       {path:'users-list', component:UsersListComponent},
-      {path:'profile', component:ProfileComponent}
+      {path:'profile', component:ProfileComponent},
+      {path:'addUser',component:FormComponent}
     ]
-  }
+  },
+  
    
 ];
 

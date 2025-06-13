@@ -1,0 +1,64 @@
+<form [formGroup]="userform" (ngSubmit)="login()">
+  <div class="form-container">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" placeholder="Enter your First Name" formControlName="firstName">
+        <div *ngIf="userform.controls['firstName'].errors && userform.controls['firstName'].touched">
+          <p *ngIf="userform.controls['firstName'].errors['required']" class="text-danger small"> FirstName is required
+          </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" placeholder="Enter your Last Name" formControlName="lastName">
+        <div *ngIf="userform.controls['lastName'].errors && userform.controls['lastName'].touched">
+          <p *ngIf="userform.controls['lastName'].errors['required']" class="text-danger small"> LastName is required
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your Email" formControlName="email">
+        <div *ngIf="userform.controls['email'].errors && userform.controls['email'].touched">
+          <p *ngIf="userform.controls['email'].errors['required']" class="text-danger small"> Email is required</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" placeholder="Enter your Age" formControlName="age">
+        <div *ngIf="userform.controls['age'].errors && userform.controls['age'].touched">
+          <p *ngIf="userform.controls['age'].errors['required']" class="text-danger small"> Age is required</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="tel" id="phoneNumber" placeholder="Enter your Phone Number" formControlName="phone">
+        <div *ngIf="userform.controls['phone'].errors && userform.controls['phone'].touched">
+          <p *ngIf="userform.controls['phone'].errors['required']" class="text-danger small"> Phone is required</p>
+          <p *ngIf="userform.controls['phone'].errors['pattern']" class="text-danger small">
+            Phone must be 11 digits
+          </p>
+        </div>
+      </div>
+      <div class="form-group date">
+        <label for="birthDate">Birth Date</label>
+        <input type="date" id="birthDate" placeholder="Enter your birth Date" name="birthDate"
+          formControlName="birthDate">
+        <div *ngIf="userform.controls['birthDate'].errors && userform.controls['birthDate'].touched">
+          <p *ngIf="userform.controls['birthDate'].errors['required']" class="text-danger small"> BirthDate is required
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <button class="save-button" type="submit">Save</button>
+  </div>
+
+</form>

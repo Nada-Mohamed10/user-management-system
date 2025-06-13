@@ -31,7 +31,7 @@ export class UsersListComponent implements OnInit {
  }
  onSearchChanged(term: string) {
   this.searchTerm = term;
-  this.page = 1; // نرجع لأول صفحة عند تغيير البحث
+  this.page = 1; 
 }
 
 }
