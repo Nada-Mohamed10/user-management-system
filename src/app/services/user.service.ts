@@ -29,4 +29,20 @@ export class UserService {
   triggerRefreshUsers() {
   this.refreshUsers.next(true); 
 }
+
+private usersList: Users[] = [];
+
+  setUsersList(users: Users[]) {
+    this.usersList = users;
+  }
+    updateUserInList(user: Users) {
+    this.usersList = this.usersList.map(u => u.id === user.id ? user : u);
+    this.updatedUsersList.next(this.usersList);
+  }
+   private updatedUsersList = new BehaviorSubject<Users[]>([]);
+  updatedUsersList$ = this.updatedUsersList.asObservable();
+  getUsersList(): Users[] {
+  return this.usersList;
+
+}
 }

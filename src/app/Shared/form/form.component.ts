@@ -11,8 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 
 export class FormComponent implements OnInit {
-  formstring:string='Add User';
-  constructor(private _userService: UserService, private toastr: ToastrService , private router: Router) { }
+  formstring: string = 'Add User';
+  constructor(private _userService: UserService, private toastr: ToastrService, private router: Router) { }
   ngOnInit(): void {
     const user = history.state.user;
     if (user) {
@@ -29,8 +29,7 @@ export class FormComponent implements OnInit {
 
 
     }
-    else 
-    {
+    else {
       this.formstring = 'Add User';
     }
   }
@@ -48,12 +47,18 @@ export class FormComponent implements OnInit {
   login() {
     if (this.userform.valid) {
       const user = this.userform.value;
+       const oldUser = history.state.user;
       if (user.id) {
+         if (!user.image && oldUser?.image) {
+        user.image = oldUser.image;
+      }
         this._userService.updateUser(user).subscribe({
           next: () => {
             this.toastr.success('User updated successfully', 'Success');
+            this._userService.updateUserInList(user);
             this.userform.reset();
-            this._userService.triggerRefreshUsers();
+            this.router.navigate(['/users-list']);
+            // this._userService.triggerRefreshUsers();
           },
           error: () => {
             this.toastr.error('Error updating user', 'Error');
@@ -65,6 +70,7 @@ export class FormComponent implements OnInit {
             this.toastr.success('User added successfully', 'Success');
             console.log('API Response:', data);
             this.userform.reset();
+            this._userService.triggerRefreshUsers();
           },
           error: (error) => {
             this.toastr.error('Error adding user', 'Error');
