@@ -5,6 +5,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SearchComponent } from './search/search.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { FormComponent } from './form/form.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,12 +17,14 @@ import { FormComponent } from './form/form.component';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     SidebarComponent,
     SearchComponent,
-    SearchPipe
+    SearchPipe,
+    FormComponent
   ]
 })
 export class SharedModule { } 

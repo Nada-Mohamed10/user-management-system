@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserApiResponse, Users } from '../Shared/interface/users';
 
 @Injectable({
@@ -17,9 +17,16 @@ export class UserService {
     return this.http.post<Users>("https://dummyjson.com/users/add",user);
   }
   updateUser(user:Users):Observable<Users> {
-    return this.http.put<Users>("https://dummyjson.com/users/",user);
+    return this.http.put<Users>(`https://dummyjson.com/users/${user.id}`, user);
   }
   deleteUser(id:number):Observable<Users> {
     return this.http.delete<Users>("https://dummyjson.com/users/"+id);
   }
+
+
+  private refreshUsers = new BehaviorSubject<boolean>(false);
+ refreshUsers$ = this.refreshUsers.asObservable();
+  triggerRefreshUsers() {
+  this.refreshUsers.next(true); 
+}
 }

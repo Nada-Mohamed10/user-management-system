@@ -1,3 +1,5 @@
+<h2>{{ formstring }}</h2>
+<hr>
 <form [formGroup]="userform" (ngSubmit)="login()">
   <div class="form-container">
     <div class="form-row">
@@ -58,7 +60,9 @@
       </div>
     </div>
 
-    <button class="save-button" type="submit">Save</button>
+    <button class="save-button" type="submit" >
+       {{ userform.value.id ? 'Update' : 'Save' }}
+    </button>
   </div>
 
 </form>

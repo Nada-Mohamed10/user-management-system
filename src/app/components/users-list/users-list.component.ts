@@ -14,6 +14,11 @@ export class UsersListComponent implements OnInit {
  constructor(private _userService:UserService) { }
   ngOnInit(): void {
     this.getUsers();
+    this._userService.refreshUsers$.subscribe((refresh) => {
+       if(refresh){
+        this.getUsers();
+       }
+    });
   }
  getUsers(){
   this._userService.getUsers().subscribe({
