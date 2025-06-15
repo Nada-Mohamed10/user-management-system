@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
+import { Users } from '../interface/users';
 
 @Component({
   selector: 'app-form',
@@ -10,29 +11,51 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./form.component.css']
 })
 
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit , OnChanges{
+  @Input() userDataFromOutside: Users | null = null;
+  @Input() showButtons: boolean = true;
   formstring: string = 'Add User';
   constructor(private _userService: UserService, private toastr: ToastrService, private router: Router) { }
-  ngOnInit(): void {
+    ngOnInit(): void {
     const user = history.state.user;
-    if (user) {
-      this.formstring = 'Update User';
-      if (user.birthDate) {
-        const date = new Date(user.birthDate);
-        const yyyy = date.getFullYear();
-        const mm = ('0' + (date.getMonth() + 1)).slice(-2); // add leading 0
-        const dd = ('0' + date.getDate()).slice(-2);        // add leading 0
-        user.birthDate = `${yyyy}-${mm}-${dd}`;
-      }
+  if (!this.userDataFromOutside && user) {
+    this.formstring = 'Update User';
 
-      this.userform.patchValue(user);
-
-
+    if (user.birthDate) {
+      const date = new Date(user.birthDate);
+      const yyyy = date.getFullYear();
+      const mm = ('0' + (date.getMonth() + 1)).slice(-2);
+      const dd = ('0' + date.getDate()).slice(-2);
+      user.birthDate = `${yyyy}-${mm}-${dd}`;
     }
-    else {
-      this.formstring = 'Add User';
-    }
+
+    this.userform.patchValue(user);
   }
+   if (!this.userDataFromOutside && !user) {
+    this.formstring = 'Add User';
+  }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['userDataFromOutside'] && this.userDataFromOutside) {
+       console.log('Data from profile input:', this.userDataFromOutside);
+    this.formstring = 'My Profile';
+
+    const user = { ...this.userDataFromOutside }; 
+  console.log('birthDate:', user.birthDate);
+console.log('age:', user.age);
+console.log('phone:', user.phone);
+    if (user.birthDate) {
+      const date = new Date(user.birthDate);
+      const yyyy = date.getFullYear();
+      const mm = ('0' + (date.getMonth() + 1)).slice(-2);
+      const dd = ('0' + date.getDate()).slice(-2);
+      user.birthDate = `${yyyy}-${mm}-${dd}`;
+    }
+
+    this.userform.patchValue(user);
+  }
+  }
+
   userform: FormGroup = new FormGroup({
     'id': new FormControl(''),
     'firstName': new FormControl('', [Validators.required]),

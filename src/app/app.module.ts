@@ -11,6 +11,7 @@ import { MainComponent } from './components/main/main.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     LoginComponent,
     MainComponent,
-    UsersListComponent
+    UsersListComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

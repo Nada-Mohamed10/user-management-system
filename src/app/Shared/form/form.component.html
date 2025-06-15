@@ -60,7 +60,7 @@
       </div>
     </div>
 
-    <button class="save-button" type="submit" >
+    <button class="save-button" type="submit" *ngIf="showButtons" >
        {{ userform.value.id ? 'Update' : 'Save' }}
     </button>
   </div>

@@ -2,12 +2,12 @@ export interface Users {
       id: number,
       firstName: string,
       lastName: string,
-      age: number,
+      age?: number,
       email: string,
-     phone: string,
+     phone?: string,
      username: string,
       password: string,
-      birthDate: string,
+      birthDate?: string,
       image: string,
      
 }

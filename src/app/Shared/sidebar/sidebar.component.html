@@ -4,11 +4,11 @@
             <div class="title">
                 <h5>UMS</h5>
             </div>
-            <div class="content justify-content-center align-items-center  d-flex mt-5">
+            <div class="content justify-content-center align-items-center  d-flex mt-5" *ngIf="user">
               <img src="assets/user.jpg" alt="">
             </div>
             <div class="content mt-2">
-                <h6 class="text-center">Karthi Madesh</h6>
+                <h6 class="text-center">{{user.firstName}} {{user.lastName}}</h6>
             </div>
             <div class="content mt-1">
                <p class="text-center ">Admin</p>
