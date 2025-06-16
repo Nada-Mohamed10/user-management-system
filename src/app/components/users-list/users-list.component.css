@@ -27,109 +27,292 @@
 
 }
 
-/* Card and Table Styles */
-.card {
+/* Base Styles */
+.users-list-container {
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.main-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     border: none;
-    border-radius: 8px;
-    overflow: hidden;
 }
 
-.table {
-    margin-bottom: 0;
+.card-header {
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 1rem;
 }
 
-.table th {
+.card-title {
+    color: #2c3e50;
     font-weight: 600;
-    color: #495057;
-    border-bottom: 2px solid #e9ecef;
+    font-size: 1.25rem;
 }
 
-.table td {
-    vertical-align: middle;
-    color: #212529;
+.card-body {
+    padding: 1rem;
 }
 
-/* User Avatar Styles */
+/* Mobile Card View */
+.mobile-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.user-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    transition: all 0.2s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.user-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
 .user-avatar {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     overflow: hidden;
+    background: #f8f9fa;
+    flex-shrink: 0;
 }
 
 .user-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: 2px solid #e9ecef;
 }
 
-/* Button Styles */
-.btn-primary {
-    background-color: #0d6efd;
-    border: none;
-    padding: 0.5rem 1rem;
+.user-primary-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-email {
+    color: #6c757d;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-card-body {
+    padding: 0.5rem 0;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    color: #495057;
+    font-size: 0.875rem;
+}
+
+.info-item i {
+    color: #6c757d;
+    width: 16px;
+}
+
+.user-card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-edit-mobile,
+.btn-delete-mobile {
+    padding: 0.5rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.2s ease;
 }
 
-.btn-primary:hover {
-    background-color: #0b5ed7;
-    transform: translateY(-1px);
-}
-
-.btn-outline-primary,
-.btn-outline-danger {
-    border-width: 1px;
-    padding: 0.25rem 0.5rem;
-}
-
-.btn-outline-primary:hover,
-.btn-outline-danger:hover {
-    transform: translateY(-1px);
-}
-
-/* Pagination Styles */
-.pagination {
-    margin-bottom: 0;
-}
-
-.page-link {
+.btn-edit-mobile {
+    background-color: #e3f2fd;
     color: #0d6efd;
-    border: 1px solid #dee2e6;
-    padding: 0.5rem 0.75rem;
+    border: none;
 }
 
-.page-item.active .page-link {
+.btn-edit-mobile:hover {
     background-color: #0d6efd;
-    border-color: #0d6efd;
+    color: #fff;
 }
 
-.page-item.disabled .page-link {
+.btn-delete-mobile {
+    background-color: #fee2e2;
+    color: #dc3545;
+    border: none;
+}
+
+.btn-delete-mobile:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Add User Button */
+.add-user-btn {
+    padding: 0.625rem 1.25rem;
+    font-weight: 600;
+    border-radius: 8px;
+    background: #0d6efd;
+    border: none;
+    transition: all 0.2s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.add-user-btn:hover {
+    background: #0b5ed7;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 2rem 1rem;
     color: #6c757d;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .container-fluid {
-        padding-left: 1rem;
-        padding-right: 1rem;
+.empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Pagination */
+.pagination-container {
+    margin-top: 1.5rem;
+}
+
+.custom-pagination ::ng-deep .ngx-pagination {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.custom-pagination ::ng-deep .ngx-pagination li {
+    margin: 0;
+}
+
+.custom-pagination ::ng-deep .ngx-pagination a,
+.custom-pagination ::ng-deep .ngx-pagination button {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    margin: 0;
+    color: #495057;
+    background: transparent;
+    transition: all 0.2s ease;
+    min-width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-pagination ::ng-deep .ngx-pagination .current {
+    background: #0d6efd;
+    border-radius: 6px;
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+    .users-list-container {
+        padding: 1.5rem;
     }
 
-    .table th,
+    .card-header {
+        padding: 1.5rem;
+    }
+
+    .header-left {
+        margin-bottom: 0;
+    }
+
+    .add-user-btn {
+        width: auto;
+        margin-top: 0;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    /* Table styles for desktop */
+    .table {
+        margin-bottom: 0;
+    }
+
+    .table thead th {
+        background: #f8f9fa;
+        color: #495057;
+        font-weight: 600;
+        padding: 1rem;
+        border: none;
+    }
+
+    .table tbody tr {
+        transition: all 0.2s ease;
+    }
+
+    .table tbody tr:hover {
+        background: #f8f9fa;
+    }
+
     .table td {
-        padding: 0.75rem 0.5rem;
+        padding: 1rem;
+        vertical-align: middle;
+        border-top: 1px solid #e9ecef;
     }
 
-    .user-avatar {
-        width: 32px;
-        height: 32px;
+    .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
     }
-}
 
-/* Hover Effects */
-.table-hover tbody tr:hover {
-    background-color: rgba(13, 110, 253, 0.05);
-}
-
-.btn-group .btn:hover {
-    z-index: 1;
+    .btn-icon {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
 }
