@@ -1,11 +1,9 @@
 <div class="container-fluid mt-5 ps-lg-5">
     <div class="row justify-content-center">
         <div class="col-12 col-xl-10">
-            <app-search (searchChanged)="onSearchChanged($event)"></app-search>
-
             <div class="title mt-4 mb-3 d-flex justify-content-between align-items-center">
                 <h5 class="title mb-0">Users List</h5>
-                <a class="btn btn-primary" routerLink="/form">ADD NEW User</a>
+                <a class="btn btn-warning" routerLink="/form">ADD NEW User</a>
             </div>
             <hr>
             <div class="table-responsive">
@@ -22,7 +20,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let user of allUsers | search:searchTerm | paginate: { itemsPerPage: 5, currentPage: page }">
+                        <tr *ngFor="let user of allUsers | search: searchTerm  | paginate: { itemsPerPage: 5, currentPage: page }" >
                             <td class="d-none d-md-table-cell">
                                 <img src="{{user.image}}" alt="" class="img-fluid rounded-circle shadow-sm" width="50px" height="50px">
                             </td>

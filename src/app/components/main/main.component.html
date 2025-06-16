@@ -1,9 +1,11 @@
 <div class="container-fluid p-0">
-    <div class="row g-0">
-        <app-sidebar></app-sidebar>
-        <main class="col-12 col-lg-10 ms-auto main-content">
-            <!-- <app-search  (searchChanged)="searchTerm=$event"></app-search> -->
-            <router-outlet></router-outlet>
-        </main>
+  <div class="row g-0">
+    <div class="col-12 col-lg-2">
+      <app-sidebar></app-sidebar>
     </div>
+    <main class="col-12 col-lg-10 px-4 py-3">
+      <app-search></app-search>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 </div>

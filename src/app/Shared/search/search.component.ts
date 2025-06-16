@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -7,10 +8,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SearchComponent {
   searchTerm: string = '';
- @Output() searchChanged = new EventEmitter<string>();
+
+  constructor(private searchService: SearchService) { }
 
 onSearchChange() {
-  this.searchChanged.emit(this.searchTerm);
-}
+   console.log("Search term from SearchComponent:", this.searchTerm);
+    this.searchService.updateSearch(this.searchTerm);
+  }
 
 }
