@@ -3,3 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.main-content {
+    min-height: 100vh;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+@media (min-width: 992px) {
+    .main-content {
+        margin-left: 250px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
