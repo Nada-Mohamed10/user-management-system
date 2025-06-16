@@ -7,7 +7,7 @@
                     <h4 class="card-title mb-0">Users List</h4>
                     <p class="text-muted mb-0">Manage all system users</p>
                 </div>
-                <a class="btn btn-primary add-user-btn" routerLink="/form">
+                <a class="btn btn-warning add-user-btn" routerLink="/form">
                     <i class="fa-solid fa-plus me-2"></i>Add New User
                 </a>
             </div>
@@ -41,7 +41,7 @@
                         <button class="btn btn-edit-mobile" routerLink="/form" [state]="{ user: user }">
                             <i class="fa-solid fa-pen me-2"></i>Edit
                         </button>
-                        <button class="btn btn-delete-mobile" (click)="deleteUser(user.id)">
+                        <button class="btn btn-danger btn-delete-mobile" (click)="deleteUser(user.id)">
                             <i class="fa-solid fa-trash me-2"></i>Delete
                         </button>
                     </div>
