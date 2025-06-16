@@ -1,66 +1,69 @@
-<!-- Toggle Button for Mobile -->
-<button class="btn btn-toggle d-lg-none" (click)="toggleSidebar()">
-    <i class="fa-solid fa-bars"></i>
-</button>
+<!-- Toggle Handle -->
+<div class="sidebar-toggle" (click)="toggleSidebar()">
+    <i class="fa-solid" [class.fa-chevron-right]="isCollapsed" [class.fa-chevron-left]="!isCollapsed"></i>
+</div>
 
 <!-- Sidebar -->
 <div class="sidebar-wrapper" [class.collapsed]="isCollapsed">
     <div class="sidebar d-flex flex-column h-100">
         <!-- Logo and Title -->
-        <div class="title p-4">
-            <h5 class="d-flex align-items-center">
+        <div class="title p-3">
+            <h5 class="d-flex align-items-center mb-0">
                 <i class="fa-solid fa-users-gear me-2"></i>
-                <span>User Management</span>
+                <span [class.d-none]="isCollapsed">User Management</span>
             </h5>
         </div>
 
         <!-- User Profile Section -->
-        <div class="user-profile text-center p-4" *ngIf="user">
-            <div class="profile-image-wrapper">
+        <div class="user-profile text-center p-3" *ngIf="user">
+            <div class="profile-image-wrapper mx-auto">
                 <img src="assets/user.jpg" alt="User Profile" class="img-fluid">
                 <div class="status-indicator online"></div>
             </div>
-            <h6 class="mt-3 mb-1">{{user.firstName}} {{user.lastName}}</h6>
-            <p class="role-badge">
-                <i class="fa-solid fa-shield-halved me-1"></i>Administrator
-            </p>
+            <div class="user-info mt-2" [class.d-none]="isCollapsed">
+                <h6 class="mb-1 text-truncate">{{user.firstName}} {{user.lastName}}</h6>
+                <p class="role-badge mb-0">
+                    <i class="fa-solid fa-shield-halved me-1"></i>
+                    <span class="d-none d-sm-inline">Administrator</span>
+                </p>
+            </div>
         </div>
 
         <!-- Navigation Menu -->
         <div class="list flex-grow-1">
-            <ul class="list-unstyled px-3">
+            <ul class="list-unstyled px-2">
                 <li class="mb-2">
                     <a href="" class="text-decoration-none d-flex align-items-center">
                         <i class="fa-solid fa-house-chimney"></i>
-                        <span class="ms-3">Dashboard</span>
+                        <span class="ms-3" [class.d-none]="isCollapsed">Dashboard</span>
                     </a>
                 </li>
                 <li class="mb-2">
                     <a href="" class="text-decoration-none d-flex align-items-center" routerLink="/users-list">
                         <i class="fa-solid fa-users-viewfinder"></i>
-                        <span class="ms-3">Users</span>
+                        <span class="ms-3" [class.d-none]="isCollapsed">Users</span>
                     </a>
                 </li>
                 <li class="mb-2">
                     <a class="text-decoration-none d-flex align-items-center" routerLink="/form">
                         <i class="fa-solid fa-user-plus"></i>
-                        <span class="ms-3">Add User</span>
+                        <span class="ms-3" [class.d-none]="isCollapsed">Add User</span>
                     </a>
                 </li>
                 <li class="mb-2">
                     <a href="" class="text-decoration-none d-flex align-items-center" routerLink="/profile">
                         <i class="fa-solid fa-id-card"></i>
-                        <span class="ms-3">Profile</span>
+                        <span class="ms-3" [class.d-none]="isCollapsed">Profile</span>
                     </a>
                 </li>
             </ul>
         </div>
 
         <!-- Logout Section -->
-        <div class="logout p-4">
+        <div class="logout p-3">
             <a class="text-decoration-none d-flex align-items-center" (click)="logout()">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <span class="ms-3">Logout</span>
+                <span class="ms-3" [class.d-none]="isCollapsed">Logout</span>
             </a>
         </div>
     </div>

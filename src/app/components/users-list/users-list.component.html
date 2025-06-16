@@ -1,39 +1,39 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
+<div class="container-fluid mt-5 ps-lg-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-10">
             <app-search (searchChanged)="onSearchChanged($event)"></app-search>
 
-            <div class="title mt-4 mb-3  d-flex justify-content-between align-items-center">
+            <div class="title mt-4 mb-3 d-flex justify-content-between align-items-center">
                 <h5 class="title mb-0">Users List</h5>
-                <a class="btn btn-primary"  routerLink="/form">ADD NEW User</a>
+                <a class="btn btn-primary" routerLink="/form">ADD NEW User</a>
             </div>
             <hr>
             <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
+                <table class="table table-hover table-bordered align-middle rounded">
+                    <thead class="table-light">
                         <tr>
                             <th class="d-none d-md-table-cell"></th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Date of admission</th>
-                            <th>Actions</th>
+                            <th class="px-2">First Name</th>
+                            <th class="px-2">Last Name</th>
+                            <th class="px-2">Email</th>
+                            <th class="px-2">Phone</th>
+                            <th class="px-2">Date of admission</th>
+                            <th class="px-2">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let user of allUsers | search:searchTerm | paginate: { itemsPerPage: 5, currentPage: page }">
                             <td class="d-none d-md-table-cell">
-                                <img src="{{user.image}}" alt="" class="img-fluid rounded-circle" width="50px" height="50px">
+                                <img src="{{user.image}}" alt="" class="img-fluid rounded-circle shadow-sm" width="50px" height="50px">
                             </td>
-                            <td>{{user.firstName}}</td>
-                            <td>{{user.lastName}}</td>
-                            <td>{{user.email}}</td>
-                            <td>{{user.phone}}</td>
-                            <td>{{user.birthDate}}</td>
-                            <td>
+                            <td class="px-2">{{user.firstName}}</td>
+                            <td class="px-2">{{user.lastName}}</td>
+                            <td class="px-2">{{user.email}}</td>
+                            <td class="px-2 text-nowrap">{{user.phone}}</td>
+                            <td class="px-2 text-nowrap">{{user.birthDate}}</td>
+                            <td class="px-2">
                                 <div class="btn-group">
-                                    <button class="btn btn-sm btn-outline-primary me-2" routerLink="/form"  [state]="{ user: user }">
+                                    <button class="btn btn-sm btn-outline-primary me-2" routerLink="/form" [state]="{ user: user }">
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
                                     <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(user.id)">
@@ -45,11 +45,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="d-flex justify-content-center">
-                <pagination-controls (pageChange)="page = $event" class="pagination mt-5"></pagination-controls>
+            <div class="d-flex justify-content-center mt-4">
+                <pagination-controls (pageChange)="page = $event" class="pagination"></pagination-controls>
             </div>
         </div>
-         
     </div>
-    
 </div>
